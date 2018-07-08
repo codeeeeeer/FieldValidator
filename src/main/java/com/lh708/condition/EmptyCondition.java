@@ -4,7 +4,7 @@ import com.lh708.common.ValidationUtil;
 import com.lh708.field.IField;
 
 /**
- * 〈〉
+ * 〈check whether the field is empty〉
  *
  * @author LewJay
  * @create 2018/7/7 9:59

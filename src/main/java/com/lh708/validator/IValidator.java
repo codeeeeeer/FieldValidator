@@ -11,6 +11,11 @@ import com.lh708.result.ResultContainer;
  * @create 2018/6/30 8:53
  */
 public interface IValidator<I> {
+
+    /**
+     * required whenever
+     * @return itself
+     */
     IValidator<I> required();
     IValidator<I> required(ICondition<I> condition);
     IValidator<I> checkEnums();

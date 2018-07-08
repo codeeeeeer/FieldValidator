@@ -1,7 +1,7 @@
 package com.lh708.condition;
 
 /**
- * 〈〉
+ * 〈base condition, defining some default methods and fields〉
  *
  * @author LewJay
  * @create 2018/7/7 9:35
@@ -12,8 +12,8 @@ public abstract class AbstractCondition<I> implements ICondition<I>{
         return this.message;
     }
 
-    public ICondition<I> setMessage(String errorMsg) {
-        this.message = errorMsg;
+    public ICondition<I> setMessage(String message) {
+        this.message = message;
         return this;
     }
 

@@ -1,7 +1,9 @@
 package com.test.bean;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +14,7 @@ import java.util.List;
  * @create 2018/6/30 9:27
  */
 @Data
+@Accessors(chain = true)
 public class Order {
     private String orderId;
     private String paymentAccount;
@@ -30,4 +33,12 @@ public class Order {
     private String contact;
 
     private List<Item> details;
+
+    public Order addItem(Item item){
+        if (this.details == null){
+            this.details = new ArrayList<Item>();
+        }
+        this.details.add(item);
+        return this;
+    }
 }

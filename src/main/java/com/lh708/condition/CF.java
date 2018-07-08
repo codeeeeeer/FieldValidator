@@ -3,7 +3,7 @@ package com.lh708.condition;
 import com.lh708.field.IField;
 
 /**
- * 〈〉
+ * 〈condition factory〉
  *
  * @author LewJay
  * @create 2018/7/7 17:58

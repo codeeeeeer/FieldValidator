@@ -16,6 +16,16 @@ public class ValidationUtil {
         if (o1 instanceof String && o2 instanceof String) {
             return ((String) o1).trim().equals(((String) o2).trim());
         }
+
+        try {
+            if (o1 instanceof Comparable && o2 instanceof Comparable){
+                return ((Comparable) o1).compareTo(o2) == 0;
+            }
+        }catch (ClassCastException e){
+            //if catch ClassCastException,just return false;
+            return false;
+        }
+
         return false;
     }
 
@@ -37,12 +47,16 @@ public class ValidationUtil {
     }
 
     public static <V extends Comparable> boolean between(V test, V min, V max){
-        if (min != null && max != null){
-            return min.compareTo(test) <= 0 && max.compareTo(test) >= 0;
-        }else if (min != null){
-            return min.compareTo(test) <= 0;
-        }else if (max != null){
-            return max.compareTo(test) >= 0;
-        }else return true;
+        try {
+            if (min != null && max != null){
+                return min.compareTo(test) <= 0 && max.compareTo(test) >= 0;
+            }else if (min != null){
+                return min.compareTo(test) <= 0;
+            }else if (max != null){
+                return max.compareTo(test) >= 0;
+            }else return true;
+        }catch (ClassCastException e){
+            return false;
+        }
     }
 }

@@ -23,7 +23,23 @@ public interface IField<I> {
      * @return
      */
     boolean validate(I input, ResultContainer resultContainer);
+
+    /**
+     * get the field name
+     * @return the field name
+     */
     String getName();
+
+    /**
+     * if the value of the field in the input if limited to some values,
+     * return the value enums
+     * @return the value enums
+     */
     IEnum[] getEnums();
+
+    /**
+     * if the field value is a list, return its child fields
+     * @return the child fields
+     */
     IField<?>[] getGroup();
 }

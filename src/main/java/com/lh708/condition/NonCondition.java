@@ -1,7 +1,7 @@
 package com.lh708.condition;
 
 /**
- * 〈〉
+ * 〈opposite the condition〉
  *
  * @author LewJay
  * @create 2018/7/7 9:48
