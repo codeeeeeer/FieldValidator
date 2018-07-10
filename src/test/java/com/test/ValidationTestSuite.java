@@ -1,5 +1,6 @@
 package com.test;
 
+import com.test.cases.ChildFieldTest;
 import com.test.cases.MultipleConditionTest;
 import com.test.cases.OrderValidatorTest;
 import com.test.cases.RuleTest;
@@ -19,6 +20,7 @@ public class ValidationTestSuite {
         suite.addTestSuite(OrderValidatorTest.class);
         suite.addTestSuite(RuleTest.class);
         suite.addTestSuite(MultipleConditionTest.class);
+        suite.addTestSuite(ChildFieldTest.class);
 
         TestRunner.run(suite);
     }

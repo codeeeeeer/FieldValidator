@@ -5,6 +5,7 @@ import com.lh708.field.IField;
 import com.lh708.result.ResultContainer;
 import com.lh708.validator.CumulativeValidator;
 import com.lh708.validator.IValidator;
+import com.test.bean.Contact;
 import com.test.bean.Item;
 import com.test.bean.Order;
 
@@ -107,6 +108,15 @@ public class OrderValidationHelper {
                 return input.getContact();
             }
         },
+        Contact2{
+            public Object getValue(Order input) {
+                return input.getContact2();
+            }
+            @Override
+            public IField[] getGroup() {
+                return ContactField.values();
+            }
+        },
         Details{
             public Object getValue(Order input) {
                 return input.getDetails();
@@ -169,6 +179,41 @@ public class OrderValidationHelper {
 
         public boolean validate(Item input, ResultContainer output) {
             return validator.validate(input, output);
+        }
+
+        public String getName() {
+            return name();
+        }
+
+        public IEnum[] getEnums() {
+            return new IEnum[0];
+        }
+
+        public IField<?>[] getGroup() {
+            return new IField[0];
+        }
+    }
+
+    public enum ContactField implements IField<Contact>{
+        Type{
+            public Object getValue(Contact input) {
+                return input.getType();
+            }
+        },
+        Number{
+            public Object getValue(Contact input) {
+                return input.getNumber();
+            }
+        },
+        Name{
+            public Object getValue(Contact input) {
+                return input.getName();
+            }
+        }
+        ;
+        public final IValidator<Contact> validator = new CumulativeValidator<Contact>(this);
+        public boolean validate(Contact input, ResultContainer resultContainer) {
+            return validator.validate(input, resultContainer);
         }
 
         public String getName() {

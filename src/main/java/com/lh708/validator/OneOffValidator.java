@@ -4,6 +4,7 @@ import com.lh708.field.IField;
 import com.lh708.result.ResultContainer;
 import com.lh708.rule.AbstractValidationRule;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -29,18 +30,23 @@ public class OneOffValidator<I> extends AbstractValidator<I> {
 
     private boolean validateChild(I input, ResultContainer output){
         Object value = this.field.getValue(input);
-        if (value != null && value instanceof List){
+        if (value == null) return true;
 
-            IField<?>[] group = this.field.getGroup();
-            if (group != null && group.length > 0){
-                for (Object child:
-                        (List)value) {
-                    for (IField childField:
-                            group) {
+        IField<?>[] group = this.field.getGroup();
+        if (group != null && group.length > 0){
+            if (value instanceof Collection){
+                for (Object child: (Collection)value) {
+                    for (IField childField: group) {
                         boolean validate = childField.validate(child, output);
                         if (! validate)
                             return false;
                     }
+                }
+            }else{
+                for (IField childField: group) {
+                    boolean validate = childField.validate(value, output);
+                    if (! validate)
+                        return false;
                 }
             }
         }

@@ -32,6 +32,8 @@ public class Order {
     private String contactType;
     private String contact;
 
+    private Contact contact2;
+
     private List<Item> details;
 
     public Order addItem(Item item){
